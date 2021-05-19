@@ -1,0 +1,91 @@
+management.endpoints.web:
+  exposure.include: info,health,prometheus
+  base-path: /
+  path-mapping:
+    info: actuator/info
+    health: health
+    prometheus: actuator/prometheus
+
+spring:
+  profiles:
+    active: local
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  datasource:
+    url: ""
+    username: ""
+    password: ""
+    initialization-mode: never
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      idleTimeout: 45000
+      connection-timeout: 3000
+      validation-timeout: 3000
+      maxLifetime: 50000
+      minimum-idle: 0
+      maximum-pool-size: 0
+
+  flyway:
+    enabled: false
+
+info:
+  version: 0.1.0
+
+---
+spring:
+  config.activate.on-profile: local
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
+    username: root
+    password: local
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 4
+
+  flyway:
+    enabled: true
+
+---
+spring:
+  config.activate.on-profile: development
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
+    username: root
+    password: local
+    hikari:
+      minimum-idle: 2
+      maximum-pool-size: 4
+
+---
+spring:
+  config.activate.on-profile: beta
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
+    username: root
+    password: local
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+
+---
+spring:
+  config.activate.on-profile: production
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
+    username: svc_platform
+    password: tjqltFaks02#
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+
+...

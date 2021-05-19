@@ -1,0 +1,8 @@
+# https://github.com/reaperes/helm-charts/blob/main/adminer/values.yaml
+
+image:
+  tag: latest
+
+service:
+  type: NodePort
+  nodePort: 30010

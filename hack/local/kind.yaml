@@ -1,0 +1,12 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: boilerplate
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30000  # mysql
+        hostPort: 3306
+        listenAddress: 127.0.0.1
+      - containerPort: 30010  # adminer
+        hostPort: 9090
+        listenAddress: 127.0.0.1

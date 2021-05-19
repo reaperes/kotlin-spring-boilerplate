@@ -1,0 +1,15 @@
+# https://github.com/bitnami/charts/tree/master/bitnami/mysql
+
+image:
+  tag: 5.7.34
+
+auth:
+  database: boilerplate
+  username: root
+  password: local
+  rootPassword: local
+
+primary:
+  service:
+    type: NodePort
+    nodePort: 30000
