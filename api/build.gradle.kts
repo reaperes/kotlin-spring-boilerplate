@@ -9,8 +9,6 @@ apply(plugin = "org.springframework.boot")
 apply(plugin = "org.flywaydb.flyway")
 
 dependencies {
-  val kotlinVersion: String by rootProject.extra
-
   val kotestVersion = "4.4.3"
   val mapstructVersion = "1.4.2.Final"
   val springfoxSwaggerVersion = "3.0.0"

@@ -32,10 +32,10 @@ subprojects {
   apply(plugin = "kotlin")
   apply(plugin = "kotlin-kapt")
 
-  tasks {
-    compileKotlin {
-      kotlinOptions.jvmTarget = "1.8"
-      kotlinOptions.freeCompilerArgs = listOf("-Xjsr305=strict")
+  tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+      jvmTarget = "1.8"
+      freeCompilerArgs = listOf("-Xjsr305=strict")
     }
   }
 }
