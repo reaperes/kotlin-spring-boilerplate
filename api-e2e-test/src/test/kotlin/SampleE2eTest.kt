@@ -7,9 +7,9 @@ import io.kotest.matchers.shouldBe
 internal class SampleE2eTest: StringSpec({
   FuelManager.instance.basePath = "http://localhost:8080"
 
-  "/api/v1/helo should work" {
+  "/api/v1/hello should work" {
     val (_, response, _) = Fuel.get(
-      "/api/v1/helo",
+      "/api/v1/hello",
       listOf("param1" to "abc"),
     ).response()
 

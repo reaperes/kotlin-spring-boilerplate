@@ -10,13 +10,11 @@ build-image:
 release-image: build-image
 	docker push $(IMG):$(TAG)
 
-init-local:
+local-init:
 	hack/local/init-local.sh
 
-clean-local:
+local-clean:
 	hack/local/clean-local.sh
 
 e2e-test:
 	./gradlew :api-e2e-test:test
-
-.PHONY: build-jar build-image release-image init-local clean-local e2e-test
