@@ -9,36 +9,32 @@ apply(plugin = "org.springframework.boot")
 apply(plugin = "org.flywaydb.flyway")
 
 dependencies {
-  val kotestVersion = "4.4.3"
-  val mapstructVersion = "1.4.2.Final"
-  val springfoxSwaggerVersion = "3.0.0"
+  implementation(platform(Libs.Boms.kotlinBom))
+  implementation(platform(Libs.Boms.awsSdkBom))
 
-  implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.4.21"))
-  implementation(platform("software.amazon.awssdk:bom:2.16.60"))
+  implementation(Libs.jacksonModuleKotlin)
+  implementation(Libs.jsonPath)
+  implementation(Libs.Swagger.starter)
+  implementation(Libs.Swagger.swagger2)
+  implementation(Libs.Swagger.swaggerUi)
+  implementation(Libs.MapStruct.mapstructJdk8)
+  implementation(Libs.MapStruct.mapstruct)
+  implementation(Libs.SpringBoot.starterActuator)
+  implementation(Libs.SpringBoot.starterWeb)
+  implementation(Libs.SpringBoot.starterDataJpa)
+  implementation(Libs.clientJava)
+  implementation(Libs.flywayCore)
 
-  implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-  implementation("com.jayway.jsonpath:json-path")
-  implementation("io.springfox:springfox-boot-starter:$springfoxSwaggerVersion")
-  implementation("io.springfox:springfox-swagger2:$springfoxSwaggerVersion")
-  implementation("io.springfox:springfox-swagger-ui:$springfoxSwaggerVersion")
-  implementation("org.mapstruct:mapstruct-jdk8:$mapstructVersion")
-  implementation("org.mapstruct:mapstruct:$mapstructVersion")
-  implementation("org.springframework.boot:spring-boot-starter-actuator")
-  implementation("org.springframework.boot:spring-boot-starter-web")
-  implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-  implementation("io.kubernetes:client-java:12.0.1")
-  implementation("org.flywaydb:flyway-core:7.5.2")
+  kapt(Libs.MapStruct.mapstructProcessor)
 
-  kapt("org.mapstruct:mapstruct-processor:$mapstructVersion")
+  runtimeOnly(Libs.mysqlConnectorJava)
 
-  runtimeOnly("mysql:mysql-connector-java:8.0.23")
-
-  testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
-  testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
-  testImplementation("io.kotest:kotest-extensions-spring:$kotestVersion")
-  testImplementation("com.appmattus.fixture:fixture:1.1.0")
-  testImplementation("io.mockk:mockk:1.11.0")
-  testImplementation("com.ninja-squad:springmockk:2.0.3")
+  testImplementation(Libs.Kotest.runnerJunit5)
+  testImplementation(Libs.Kotest.assertionsCore)
+  testImplementation(Libs.Kotest.extensionsSpring)
+  testImplementation(Libs.fixture)
+  testImplementation(Libs.mockk)
+  testImplementation(Libs.springMockk)
 }
 
 tasks.withType<Test> {

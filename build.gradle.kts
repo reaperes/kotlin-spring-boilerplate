@@ -3,7 +3,7 @@ buildscript {
     mavenCentral()
   }
   dependencies {
-    "classpath"(group = "org.yaml", name = "snakeyaml", version = "1.28")
+    classpath(Libs.snakeYaml)
   }
 }
 
