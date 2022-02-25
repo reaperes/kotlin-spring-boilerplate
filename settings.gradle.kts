@@ -7,6 +7,5 @@ pluginManagement {
 }
 
 include(
-  "api",
-  "api-e2e-test",
+  "api"
 )

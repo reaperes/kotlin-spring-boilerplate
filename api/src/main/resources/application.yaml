@@ -10,6 +10,10 @@ spring:
   profiles:
     active: local
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
   jpa:
     open-in-view: false
     hibernate:
@@ -21,8 +25,6 @@ spring:
     url: ""
     username: ""
     password: ""
-    initialization-mode: never
-    driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       idleTimeout: 45000
       connection-timeout: 3000
@@ -42,7 +44,7 @@ spring:
   config.activate.on-profile: local
 
   datasource:
-    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
+    url: jdbc:mysql://localhost:3306/TABLE_NAME?autoReconnect=true
     username: root
     password: local
     hikari:
@@ -51,41 +53,16 @@ spring:
 
   flyway:
     enabled: true
+    url: jdbc:mysql://localhost:3306/TABLE_NAME
+    user: root
+    password: local
 
 ---
 spring:
   config.activate.on-profile: development
 
-  datasource:
-    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
-    username: root
-    password: local
-    hikari:
-      minimum-idle: 2
-      maximum-pool-size: 4
-
----
-spring:
-  config.activate.on-profile: beta
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
-    username: root
-    password: local
-    hikari:
-      minimum-idle: 5
-      maximum-pool-size: 10
-
 ---
 spring:
   config.activate.on-profile: production
-
-  datasource:
-    url: jdbc:mysql://localhost:3306/boilerplate?autoReconnect=true
-    username: svc_platform
-    password: tjqltFaks02#
-    hikari:
-      minimum-idle: 5
-      maximum-pool-size: 10
 
 ...

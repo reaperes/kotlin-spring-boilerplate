@@ -2,14 +2,12 @@ buildscript {
   repositories {
     mavenCentral()
   }
-  dependencies {
-    classpath(Libs.snakeYaml)
-  }
 }
 
 plugins {
-  val kotlinVer = "1.4.21"
-  val ktlintVer = "10.0.0"
+  val kotlinVer = "1.6.10"  // https://kotlinlang.org/docs/releases.html
+  val ktlintVer = "10.2.1"  // https://github.com/JLLeitschuh/ktlint-gradle/releases
+  val springVer = "2.6.3"  // https://github.com/spring-projects/spring-boot/releases
 
   kotlin("jvm") version kotlinVer
   kotlin("kapt") version kotlinVer
@@ -18,7 +16,7 @@ plugins {
 
   id("org.jlleitschuh.gradle.ktlint") version ktlintVer
   id("org.jlleitschuh.gradle.ktlint-idea") version ktlintVer
-  id("org.springframework.boot") version "2.4.5"
+  id("org.springframework.boot") version springVer
   id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
@@ -34,7 +32,7 @@ subprojects {
 
   tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
-      jvmTarget = "1.8"
+      jvmTarget = "17"
       freeCompilerArgs = listOf("-Xjsr305=strict")
     }
   }
